@@ -5,7 +5,7 @@ from src.lesson_10_2 import calculate_taxes, calculate_tax
 
 def test_calculate_taxes(prices, tax_rate):
 
-    assert calculate_taxes(prices, tax_rate) == [11.526, 6.554, 10.961]
+    assert calculate_taxes(prices, tax_rate) == [11.53, 6.55, 10.96]
 
     with pytest.raises(ValueError) as exc_info_tax_rate:
         calculate_taxes(prices, -1)
@@ -16,9 +16,9 @@ def test_calculate_taxes(prices, tax_rate):
     assert str(exc_info_price.value) == "Неверная цена"
 
 
-def test_calculate_tax(price, tax_rate):
+def test_calculate_tax(price, tax_rate, discount):
 
-    assert calculate_tax(price, tax_rate) == 11.526
+    assert calculate_tax(price, tax_rate) == 11.53
 
     # проверяем при цене отрицательной
     with pytest.raises(ValueError) as exc_info:
@@ -39,3 +39,9 @@ def test_calculate_tax(price, tax_rate):
     with pytest.raises(ValueError) as exc_info:
         calculate_tax(price, -1)
     assert str(exc_info.value) == "Неверный налоговый процент"
+
+    assert calculate_tax(price, tax_rate, discount) == 10.37
+
+    with pytest.raises(TypeError) as exc_info:
+        calculate_tax("", tax_rate)
+    assert str(exc_info.value) == "Введены не цифровые значения"

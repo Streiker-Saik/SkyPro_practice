@@ -11,3 +11,7 @@ def tax_rate():
 @pytest.fixture
 def price():
     return 10.2
+
+@pytest.fixture
+def discount():
+    return 10.0
