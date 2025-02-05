@@ -45,3 +45,11 @@ filename = "data/names.txt"
 names = extract_names(filename)
 print(names)
 main(names)
+
+print("Урок 11.1")
+# filter_orders_by_cost = filter(lambda orders_by_cost: orders_by_cost > "r" == 0, orders_by_cost)
+
+with open("orders.csv", "r") as f:
+    result = filter_orders_by_cost(f, 20)
+
+print(result)
